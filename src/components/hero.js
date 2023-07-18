@@ -22,11 +22,11 @@ function Hero() {
   const toast = useRef(null);
 
   const load = async () => {
-    if (!selectedCurrencies || selectedCurrencies.length < 2) {
+    if (!selectedCurrencies || selectedCurrencies.length < 4) {
       toast.current.show({
         severity: "error",
         summary: "Error",
-        detail: "Please select at least 2 assets.",
+        detail: "Please select at least 4 assets.",
         life: 3000,
       });
       return;
@@ -47,7 +47,7 @@ function Hero() {
     toast.current.show({
       severity: "success",
       summary: "Success",
-      detail: "Your portfolio was successfully optimised.",
+      detail: "Your portfolio was successfully optimized.",
       life: 3000,
     }); //TODO: change that it only shows when the graph is loaded
   };
@@ -86,18 +86,45 @@ function Hero() {
     { name: "Tether", code: "USDT-USD" },
     { name: "Binance Coin", code: "BNB-USD" },
     { name: "XRP", code: "XRP-USD" },
+    { name: "Toncoin", code: "TON-USD" },
+    { name: "Dai", code: "DAI-USD" },
+    { name: "Shiba Inu", code: "SHIB-USD" },
+    { name: "Tron", code: "TRX-USD" },
+    { name: "Polkadot", code: "DOT-USD" },
+    { name: "Enegra", code: "EGX-USD" },
     { name: "Solana", code: "SOL-USD" },
     { name: "Dogecoin", code: "DOGE-USD" },
     { name: "USD Coin", code: "USDC-USD" },
     { name: "Avalanche", code: "AVAX-USD" },
     { name: "Chainlink", code: "LINK-USD" },
     { name: "Bitcoin Cash", code: "BCH-USD" },
-    { name: "Algorand", code: "ALGO-USD" },
     { name: "Litecoin", code: "LTC-USD" },
+    { name: "Polygon", code: "MATIC-USD" },
+    //Top 20 stocks by market cap
+    { name: "Apple", code: "AAPL" },
+    { name: "Microsoft", code: "MSFT" },
+    { name: "Alphabet", code: "GOOGL" },
+    { name: "Amazon", code: "AMZN" },
+    { name: "Meta", code: "META" },
+    { name: "Tesla", code: "TSLA" },
+    { name: "Berkshire Hathaway", code: "BRK-A" },
+    { name: "Visa", code: "V" },
+    { name: "Johnson & Johnson", code: "JNJ" },
+    { name: "JPMorgan Chase", code: "JPM" },
+    { name: "Walmart", code: "WMT" },
+    { name: "UnitedHealth Group", code: "UNH" },
+    { name: "Mastercard", code: "MA" },
+    { name: "Procter & Gamble", code: "PG" },
+    { name: "NVIDIA", code: "NVDA" },
+    { name: "Home Depot", code: "HD" },
+    { name: "PayPal", code: "PYPL" },
+    { name: "Bank of America", code: "BAC" },
+    { name: "Intel", code: "INTC" },
+    { name: "Verizon", code: "VZ" },
   ];
 
   return (
-    <div className="text-black bg-white pb-10">
+    <div className="pb-10 text-black bg-white">
       <Toast ref={toast} />
 
       <h1 className="ml-[10%] mt-3 text-3xl font-bold">Efficient Frontier</h1>
@@ -121,7 +148,7 @@ function Hero() {
             />
           </div>
 
-          <div className="flex align-items-center mt-4 mb-5">
+          <div className="flex mt-4 mb-5 align-items-center">
             <Checkbox
               inputId="includeAllAssets"
               name="includeAllAssets"
@@ -133,7 +160,7 @@ function Hero() {
             </label>
           </div>
 
-          <h2 className="text-lg font-bold mb-3">Crypto Assets:</h2>
+          <h2 className="mb-3 text-lg font-bold">Crypto Assets:</h2>
           <MultiSelect
             value={selectedCurrencies}
             onChange={(e) => setSelectedCurrencies(e.value)}
@@ -142,7 +169,7 @@ function Hero() {
             filter
             placeholder="Select Assets"
             maxSelectedLabels={10}
-            className="w-full md:w-20rem mb-5"
+            className="w-full mb-5 md:w-20rem"
             display="chip"
           />
 
